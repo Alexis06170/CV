@@ -1,3 +1,42 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $nom = htmlspecialchars(trim($_POST['nom']));
+  $prenom = htmlspecialchars(trim($_POST['prenom']));
+  $entreprise = htmlspecialchars(trim($_POST['entreprise']));
+  $mail = htmlspecialchars(trim($_POST['mail']));
+  $telephone = htmlspecialchars(trim($_POST['telephone']));
+
+  // Adresse e-mail de réception
+  $to = "ledant.alexis.1@gmail.com"; // Remplacez par votre adresse e-mail
+  $subject = "Nouveau message depuis le formulaire";
+
+  // Contenu de l'email
+  $message = "
+            <html>
+            <head>
+                <title>Nouveau formulaire soumis</title>
+            </head>
+            <body>
+                <h2>Informations du formulaire :</h2>
+                <p><strong>Nom :</strong> $nom</p>
+                <p><strong>Prénom :</strong> $prenom</p>
+                <p><strong>Nom de l'entreprise :</strong> $entreprise</p>
+                <p><strong>Numéro de téléphone :</strong> $telephone</p>
+            </body>
+            </html>
+        ";
+
+  // En-têtes pour l'e-mail
+  $headers  = "MIME-Version: 1.0" . "\r\n";
+  $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+  $headers .= "From: webmaster@example.com" . "\r\n"; // Remplacez par une adresse valide
+
+  // Envoi de l'e-mail
+  if (mail($to, $subject, $message, $headers)) {
+    echo "Votre message a été envoyé avec succès.";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -122,28 +161,14 @@
     </section>
 
     <!-- FORMULAIRE -->
-
     <section class="reign">
-      <form method="post">
-        <div class="form">
-          <div class="la">
-            <label for="prenom">Prénom</label>
-            <label for="nom">Nom</label>
-            <label for="nome">Nom entreprise</label>
-            <label for="mail">Email</label>
-            <label for="numero">Numéro</label>
-          </div>
-          <div class="in">
-            <input type="text" name="prenom" /><br />
-            <input type="text" name="nom" /><br />
-            <input type="text" name="nome" /><br />
-            <input type="email" id="mail" name="mail" /><br />
-            <input type="text" name="numero" />
-          </div>
-        </div>
-        <div>
-          <input type="submit" name="valider" value="valider"></button>
-        </div>
+      <form action="index.php" method="POST">
+        <input type="text" placeholder="nom" id="nom" name="nom" required><br><br>
+        <input type="text" placeholder="prénom" id="prenom" name="prenom" required><br><br>
+        <input type="text" placeholder="nom d'entreprise" id="entreprise" name="entreprise" required><br><br>
+        <input type="mail" id="mail" name="mail" placeholder="ex : exemple@gmail.com"><br><br>
+        <input type="tel" id="telephone" name="telephone" pattern="[0-9]{10}" placeholder="ex : 0612345678" required><br><br>
+        <button type="submit">Envoyer</button>
       </form>
     </section>
     <!-- FIN FORMULAIRE -->
