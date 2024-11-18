@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // En-têtes pour l'e-mail
   $headers  = "MIME-Version: 1.0" . "\r\n";
   $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-  $headers .= "From: webmaster@example.com" . "\r\n"; // Remplacez par une adresse valide
+  $headers .= "From: nico281107@gmail.com" . "\r\n"; // Remplacez par une adresse valide
 
   // Envoi de l'e-mail
   if (mail($to, $subject, $message, $headers)) {
