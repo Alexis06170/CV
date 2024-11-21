@@ -122,14 +122,51 @@
     </section>
     <!-- FORMULAIRE -->
     <section class="reign">
-      <form action="index.php" method="POST">
-        <input type="text" placeholder="nom" id="nom" name="nom" required><br><br>
-        <input type="text" placeholder="prénom" id="prenom" name="prenom" required><br><br>
-        <input type="text" placeholder="nom d'entreprise" id="entreprise" name="entreprise" required><br><br>
-        <input type="mail" id="mail" name="mail" placeholder="ex : exemple@gmail.com"><br><br>
-        <input type="tel" id="telephone" name="telephone" pattern="[0-9]{10}" placeholder="ex : 0612345678" required><br><br>
-        <button type="submit">Envoyer</button>
-      </form>
+        <form action="mailto:ledant.alexis.1@gmail.com" method="get" class="contact">
+          <section class="info_form">
+            <div class="name">
+              <!-- NOM -->
+              <label for="name"></label>
+              <input
+                placeholder="Nom"
+                type="text"
+                id="name"
+                name="name"
+                required
+              />
+            </div>
+            <div class="mail">
+              <!-- EMAIL -->
+              <label for="mail">
+                <input
+                  placeholder="Adresse e-mail"
+                  type="mail"
+                  id="mail"
+                  name="email"
+                  required
+                />
+              </label>
+            </div>
+          </section>
+          <div class="message">
+            <!-- MESSAGE -->
+            <textarea
+              placeholder="message"
+              rows="4"
+              name="message"
+              class="message"
+              id="message"
+            ></textarea>
+          </div>
+          <!-- SEND -->
+          <input
+            type="submit"
+            value="envoyé"
+            class="send"
+            id="name"
+            name="send"
+          />
+        </form>
     </section>
     <!-- FIN FORMULAIRE -->
   </footer>
